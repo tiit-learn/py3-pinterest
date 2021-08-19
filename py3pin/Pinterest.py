@@ -197,7 +197,7 @@ class Pinterest:
             http_proxy.add_to_capabilities(chrome_options)
 
         driver = webdriver.Chrome(
-            ChromeDriverManager().install(), options=chrome_options
+            ChromeDriverManager(path=".cache").install(), options=chrome_options
         )
         driver.get("https://pinterest.com/login")
 
