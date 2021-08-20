@@ -181,6 +181,7 @@ class Pinterest:
         :return python dict object describing the pinterest response
         """
         chrome_options = Options()
+        chrome_options.add_argument("--remote-debugging-port=9222")
         chrome_options.add_argument("--lang=%s" % lang)
         if headless:
             chrome_options.add_argument("--headless")
