@@ -181,9 +181,6 @@ class Pinterest:
         :return python dict object describing the pinterest response
         """
         chrome_options = Options()
-        chrome_options.add_argument("--remote-debugging-port=9222")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--lang=%s" % lang)
         if headless:
             chrome_options.add_argument("--headless")
@@ -227,9 +224,11 @@ class Pinterest:
             self.registry.update_all(self.http.cookies.get_dict())
         except Exception as e:
             print("Failed to login", e)
+            raise ValueError
+        finally:
+            driver.close()
 
         print("Successfully logged in with account " + self.email)
-        driver.close()
 
     def logout(self):
         """
