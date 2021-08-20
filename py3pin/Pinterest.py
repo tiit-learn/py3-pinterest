@@ -227,7 +227,7 @@ class Pinterest:
             self.registry.update_all(self.http.cookies.get_dict())
         except Exception as e:
             print("Failed to login", e)
-            raise ValueError
+            raise
         finally:
             driver.close()
 
